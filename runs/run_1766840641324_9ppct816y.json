@@ -1,0 +1,691 @@
+{
+  "runId": "run_1766840641324_9ppct816y",
+  "startTime": "2025-12-27T13:04:01.324Z",
+  "endTime": "2025-12-27T13:04:01.328Z",
+  "totalDurationMs": 4,
+  "status": "completed",
+  "pipelineName": "Smart Hiring Screener",
+  "steps": [
+    {
+      "stepName": "resume_parsing",
+      "timestamp": "2025-12-27T13:04:01.325Z",
+      "durationMs": 0,
+      "status": "success",
+      "input": {
+        "candidateCount": 6
+      },
+      "output": {
+        "parsedResumes": [
+          {
+            "candidateId": "C001",
+            "candidateName": "John Doe",
+            "skills": [
+              "React",
+              "JavaScript",
+              "CSS",
+              "HTML"
+            ],
+            "yearsExperience": 2,
+            "bioSummary": "I love working in teams and believe in continuous learning. I take ownership of my projects and always strive for excellence."
+          },
+          {
+            "candidateId": "C002",
+            "candidateName": "Jane Smith",
+            "skills": [
+              "Next.js",
+              "TypeScript",
+              "Node.js",
+              "PostgreSQL",
+              "AWS"
+            ],
+            "yearsExperience": 5,
+            "bioSummary": "Team player with a passion for mentorship and knowledge sharing. I believe in building products that make a real impact. Strong advocate for code quality and best practices."
+          },
+          {
+            "candidateId": "C003",
+            "candidateName": "Mike Johnson",
+            "skills": [
+              "Vue.js",
+              "Angular",
+              "JavaScript",
+              "SASS",
+              "Webpack"
+            ],
+            "yearsExperience": 4,
+            "bioSummary": "Independent worker who prefers solo projects. Focused on technical excellence and clean code architecture."
+          },
+          {
+            "candidateId": "C004",
+            "candidateName": "Sarah Williams",
+            "skills": [
+              "React",
+              "Next.js",
+              "TypeScript",
+              "GraphQL",
+              "Docker",
+              "Kubernetes"
+            ],
+            "yearsExperience": 6,
+            "bioSummary": "Natural leader who thrives in collaborative environments. I take full ownership of deliverables and love helping team members grow. Passionate about creating inclusive and supportive team cultures."
+          },
+          {
+            "candidateId": "C005",
+            "candidateName": "Alex Chen",
+            "skills": [
+              "Python",
+              "Django",
+              "React",
+              "PostgreSQL",
+              "Redis"
+            ],
+            "yearsExperience": 3,
+            "bioSummary": "Problem solver who enjoys tackling complex challenges. I work well both independently and in teams, adapting to project needs."
+          },
+          {
+            "candidateId": "C006",
+            "candidateName": "Emily Brown",
+            "skills": [
+              "React",
+              "Next.js",
+              "JavaScript",
+              "Tailwind CSS"
+            ],
+            "yearsExperience": 1,
+            "bioSummary": "Eager learner with strong communication skills. I love collaborating with others and bringing fresh perspectives to the team."
+          }
+        ]
+      },
+      "reasoning": "Successfully parsed 6 resumes. Extracted skills, experience years, and bio summaries from each candidate using simulated LLM extraction.",
+      "metadata": {
+        "candidateNames": [
+          "John Doe",
+          "Jane Smith",
+          "Mike Johnson",
+          "Sarah Williams",
+          "Alex Chen",
+          "Emily Brown"
+        ]
+      }
+    },
+    {
+      "stepName": "technical_filter",
+      "timestamp": "2025-12-27T13:04:01.326Z",
+      "durationMs": 0,
+      "status": "warning",
+      "input": {
+        "candidates": 6,
+        "requirements": {
+          "minExperience": 3,
+          "requiredSkills": [
+            "React",
+            "Next.js"
+          ]
+        }
+      },
+      "output": {
+        "qualified": 3,
+        "rejected": 3,
+        "results": [
+          {
+            "candidateId": "C001",
+            "candidateName": "John Doe",
+            "qualified": false,
+            "checks": {
+              "experienceCheck": {
+                "passed": false,
+                "actual": 2,
+                "required": 3,
+                "detail": "2 years < required 3 years"
+              },
+              "skillCheck": {
+                "passed": true,
+                "foundSkills": [
+                  "React"
+                ],
+                "requiredSkills": [
+                  "React",
+                  "Next.js"
+                ],
+                "detail": "Found required skills: React"
+              }
+            },
+            "reason": "Rejected: insufficient experience"
+          },
+          {
+            "candidateId": "C002",
+            "candidateName": "Jane Smith",
+            "qualified": true,
+            "checks": {
+              "experienceCheck": {
+                "passed": true,
+                "actual": 5,
+                "required": 3,
+                "detail": "5 years >= required 3 years"
+              },
+              "skillCheck": {
+                "passed": true,
+                "foundSkills": [
+                  "Next.js"
+                ],
+                "requiredSkills": [
+                  "React",
+                  "Next.js"
+                ],
+                "detail": "Found required skills: Next.js"
+              }
+            },
+            "reason": "Passed technical requirements"
+          },
+          {
+            "candidateId": "C003",
+            "candidateName": "Mike Johnson",
+            "qualified": false,
+            "checks": {
+              "experienceCheck": {
+                "passed": true,
+                "actual": 4,
+                "required": 3,
+                "detail": "4 years >= required 3 years"
+              },
+              "skillCheck": {
+                "passed": false,
+                "foundSkills": [],
+                "requiredSkills": [
+                  "React",
+                  "Next.js"
+                ],
+                "detail": "Missing required skills (React or Next.js). Has: Vue.js, Angular, JavaScript, SASS, Webpack"
+              }
+            },
+            "reason": "Rejected: missing required skills"
+          },
+          {
+            "candidateId": "C004",
+            "candidateName": "Sarah Williams",
+            "qualified": true,
+            "checks": {
+              "experienceCheck": {
+                "passed": true,
+                "actual": 6,
+                "required": 3,
+                "detail": "6 years >= required 3 years"
+              },
+              "skillCheck": {
+                "passed": true,
+                "foundSkills": [
+                  "React",
+                  "Next.js"
+                ],
+                "requiredSkills": [
+                  "React",
+                  "Next.js"
+                ],
+                "detail": "Found required skills: React, Next.js"
+              }
+            },
+            "reason": "Passed technical requirements"
+          },
+          {
+            "candidateId": "C005",
+            "candidateName": "Alex Chen",
+            "qualified": true,
+            "checks": {
+              "experienceCheck": {
+                "passed": true,
+                "actual": 3,
+                "required": 3,
+                "detail": "3 years >= required 3 years"
+              },
+              "skillCheck": {
+                "passed": true,
+                "foundSkills": [
+                  "React"
+                ],
+                "requiredSkills": [
+                  "React",
+                  "Next.js"
+                ],
+                "detail": "Found required skills: React"
+              }
+            },
+            "reason": "Passed technical requirements"
+          },
+          {
+            "candidateId": "C006",
+            "candidateName": "Emily Brown",
+            "qualified": false,
+            "checks": {
+              "experienceCheck": {
+                "passed": false,
+                "actual": 1,
+                "required": 3,
+                "detail": "1 years < required 3 years"
+              },
+              "skillCheck": {
+                "passed": true,
+                "foundSkills": [
+                  "React",
+                  "Next.js"
+                ],
+                "requiredSkills": [
+                  "React",
+                  "Next.js"
+                ],
+                "detail": "Found required skills: React, Next.js"
+              }
+            },
+            "reason": "Rejected: insufficient experience"
+          }
+        ]
+      },
+      "evaluations": [
+        {
+          "itemName": "John Doe",
+          "passed": false,
+          "details": {
+            "candidateId": "C001",
+            "experienceCheck": {
+              "passed": false,
+              "actual": 2,
+              "required": 3,
+              "detail": "2 years < required 3 years"
+            },
+            "skillCheck": {
+              "passed": true,
+              "foundSkills": [
+                "React"
+              ],
+              "requiredSkills": [
+                "React",
+                "Next.js"
+              ],
+              "detail": "Found required skills: React"
+            }
+          }
+        },
+        {
+          "itemName": "Jane Smith",
+          "passed": true,
+          "details": {
+            "candidateId": "C002",
+            "experienceCheck": {
+              "passed": true,
+              "actual": 5,
+              "required": 3,
+              "detail": "5 years >= required 3 years"
+            },
+            "skillCheck": {
+              "passed": true,
+              "foundSkills": [
+                "Next.js"
+              ],
+              "requiredSkills": [
+                "React",
+                "Next.js"
+              ],
+              "detail": "Found required skills: Next.js"
+            }
+          }
+        },
+        {
+          "itemName": "Mike Johnson",
+          "passed": false,
+          "details": {
+            "candidateId": "C003",
+            "experienceCheck": {
+              "passed": true,
+              "actual": 4,
+              "required": 3,
+              "detail": "4 years >= required 3 years"
+            },
+            "skillCheck": {
+              "passed": false,
+              "foundSkills": [],
+              "requiredSkills": [
+                "React",
+                "Next.js"
+              ],
+              "detail": "Missing required skills (React or Next.js). Has: Vue.js, Angular, JavaScript, SASS, Webpack"
+            }
+          }
+        },
+        {
+          "itemName": "Sarah Williams",
+          "passed": true,
+          "details": {
+            "candidateId": "C004",
+            "experienceCheck": {
+              "passed": true,
+              "actual": 6,
+              "required": 3,
+              "detail": "6 years >= required 3 years"
+            },
+            "skillCheck": {
+              "passed": true,
+              "foundSkills": [
+                "React",
+                "Next.js"
+              ],
+              "requiredSkills": [
+                "React",
+                "Next.js"
+              ],
+              "detail": "Found required skills: React, Next.js"
+            }
+          }
+        },
+        {
+          "itemName": "Alex Chen",
+          "passed": true,
+          "details": {
+            "candidateId": "C005",
+            "experienceCheck": {
+              "passed": true,
+              "actual": 3,
+              "required": 3,
+              "detail": "3 years >= required 3 years"
+            },
+            "skillCheck": {
+              "passed": true,
+              "foundSkills": [
+                "React"
+              ],
+              "requiredSkills": [
+                "React",
+                "Next.js"
+              ],
+              "detail": "Found required skills: React"
+            }
+          }
+        },
+        {
+          "itemName": "Emily Brown",
+          "passed": false,
+          "details": {
+            "candidateId": "C006",
+            "experienceCheck": {
+              "passed": false,
+              "actual": 1,
+              "required": 3,
+              "detail": "1 years < required 3 years"
+            },
+            "skillCheck": {
+              "passed": true,
+              "foundSkills": [
+                "React",
+                "Next.js"
+              ],
+              "requiredSkills": [
+                "React",
+                "Next.js"
+              ],
+              "detail": "Found required skills: React, Next.js"
+            }
+          }
+        }
+      ],
+      "reasoning": "Applied technical filters: 3 candidates rejected, 3 qualified. Rejection reasons: John Doe - Rejected: insufficient experience; Mike Johnson - Rejected: missing required skills; Emily Brown - Rejected: insufficient experience. Requirements: >= 3 years experience AND (React OR Next.js) skills.",
+      "metadata": {
+        "rejectedCandidates": [
+          {
+            "name": "John Doe",
+            "reason": "Rejected: insufficient experience"
+          },
+          {
+            "name": "Mike Johnson",
+            "reason": "Rejected: missing required skills"
+          },
+          {
+            "name": "Emily Brown",
+            "reason": "Rejected: insufficient experience"
+          }
+        ]
+      }
+    },
+    {
+      "stepName": "culture_fit_evaluation",
+      "timestamp": "2025-12-27T13:04:01.327Z",
+      "durationMs": 1,
+      "status": "success",
+      "input": {
+        "candidates": 3
+      },
+      "output": {
+        "scores": [
+          {
+            "candidateId": "C002",
+            "candidateName": "Jane Smith",
+            "score": 8,
+            "evaluation": "Strong cultural fit. Jane Smith demonstrates clear alignment with company values around teamwork, ownership, and impact. Bio shows strong emphasis on collaboration and taking responsibility for outcomes.",
+            "alignmentDetails": {
+              "teamwork": 9,
+              "ownership": 5,
+              "growth": 8,
+              "impact": 9
+            }
+          },
+          {
+            "candidateId": "C004",
+            "candidateName": "Sarah Williams",
+            "score": 8,
+            "evaluation": "Strong cultural fit. Sarah Williams demonstrates clear alignment with company values around teamwork, ownership, and impact. Bio shows strong emphasis on collaboration and taking responsibility for outcomes.",
+            "alignmentDetails": {
+              "teamwork": 9,
+              "ownership": 9,
+              "growth": 8,
+              "impact": 6
+            }
+          },
+          {
+            "candidateId": "C005",
+            "candidateName": "Alex Chen",
+            "score": 6,
+            "evaluation": "Moderate cultural fit. Alex Chen shows some alignment with company values but less emphasis on collaboration or growth mindset.",
+            "alignmentDetails": {
+              "teamwork": 9,
+              "ownership": 5,
+              "growth": 5,
+              "impact": 6
+            }
+          }
+        ]
+      },
+      "evaluations": [
+        {
+          "itemName": "Jane Smith",
+          "passed": true,
+          "score": 8,
+          "details": {
+            "candidateId": "C002",
+            "alignmentDetails": {
+              "teamwork": 9,
+              "ownership": 5,
+              "growth": 8,
+              "impact": 9
+            },
+            "evaluation": "Strong cultural fit. Jane Smith demonstrates clear alignment with company values around teamwork, ownership, and impact. Bio shows strong emphasis on collaboration and taking responsibility for outcomes."
+          }
+        },
+        {
+          "itemName": "Sarah Williams",
+          "passed": true,
+          "score": 8,
+          "details": {
+            "candidateId": "C004",
+            "alignmentDetails": {
+              "teamwork": 9,
+              "ownership": 9,
+              "growth": 8,
+              "impact": 6
+            },
+            "evaluation": "Strong cultural fit. Sarah Williams demonstrates clear alignment with company values around teamwork, ownership, and impact. Bio shows strong emphasis on collaboration and taking responsibility for outcomes."
+          }
+        },
+        {
+          "itemName": "Alex Chen",
+          "passed": true,
+          "score": 6,
+          "details": {
+            "candidateId": "C005",
+            "alignmentDetails": {
+              "teamwork": 9,
+              "ownership": 5,
+              "growth": 5,
+              "impact": 6
+            },
+            "evaluation": "Moderate cultural fit. Alex Chen shows some alignment with company values but less emphasis on collaboration or growth mindset."
+          }
+        }
+      ],
+      "reasoning": "Evaluated culture fit for 3 qualified candidates using simulated LLM analysis of bio against company values (teamwork, ownership, growth, impact). Scores: Jane Smith: 8/10, Sarah Williams: 8/10, Alex Chen: 6/10. High-scoring candidates show strong alignment with collaborative culture and ownership mindset.",
+      "metadata": {
+        "averageScore": 7.3
+      }
+    },
+    {
+      "stepName": "final_selection",
+      "timestamp": "2025-12-27T13:04:01.328Z",
+      "durationMs": 0,
+      "status": "success",
+      "input": {
+        "candidates": 3,
+        "topN": 3
+      },
+      "output": {
+        "selectedCandidates": [
+          {
+            "candidateId": "C004",
+            "candidateName": "Sarah Williams",
+            "cultureScore": 8,
+            "yearsExperience": 6,
+            "totalScore": 7.2,
+            "rank": 1,
+            "selected": true,
+            "reason": "Selected (Rank 1): Strong combination of culture fit (8/10) and 6 years experience. Total score: 7.2"
+          },
+          {
+            "candidateId": "C002",
+            "candidateName": "Jane Smith",
+            "cultureScore": 8,
+            "yearsExperience": 5,
+            "totalScore": 6.8,
+            "rank": 2,
+            "selected": true,
+            "reason": "Selected (Rank 2): Strong combination of culture fit (8/10) and 5 years experience. Total score: 6.8"
+          },
+          {
+            "candidateId": "C005",
+            "candidateName": "Alex Chen",
+            "cultureScore": 6,
+            "yearsExperience": 3,
+            "totalScore": 4.8,
+            "rank": 3,
+            "selected": true,
+            "reason": "Selected (Rank 3): Strong combination of culture fit (6/10) and 3 years experience. Total score: 4.8"
+          }
+        ],
+        "allRankings": [
+          {
+            "candidateId": "C004",
+            "candidateName": "Sarah Williams",
+            "cultureScore": 8,
+            "yearsExperience": 6,
+            "totalScore": 7.2,
+            "rank": 1,
+            "selected": true,
+            "reason": "Selected (Rank 1): Strong combination of culture fit (8/10) and 6 years experience. Total score: 7.2"
+          },
+          {
+            "candidateId": "C002",
+            "candidateName": "Jane Smith",
+            "cultureScore": 8,
+            "yearsExperience": 5,
+            "totalScore": 6.8,
+            "rank": 2,
+            "selected": true,
+            "reason": "Selected (Rank 2): Strong combination of culture fit (8/10) and 5 years experience. Total score: 6.8"
+          },
+          {
+            "candidateId": "C005",
+            "candidateName": "Alex Chen",
+            "cultureScore": 6,
+            "yearsExperience": 3,
+            "totalScore": 4.8,
+            "rank": 3,
+            "selected": true,
+            "reason": "Selected (Rank 3): Strong combination of culture fit (6/10) and 3 years experience. Total score: 4.8"
+          }
+        ]
+      },
+      "evaluations": [
+        {
+          "itemName": "Sarah Williams",
+          "passed": true,
+          "score": 7.2,
+          "details": {
+            "candidateId": "C004",
+            "rank": 1,
+            "cultureScore": 8,
+            "experience": 6,
+            "totalScore": 7.2
+          }
+        },
+        {
+          "itemName": "Jane Smith",
+          "passed": true,
+          "score": 6.8,
+          "details": {
+            "candidateId": "C002",
+            "rank": 2,
+            "cultureScore": 8,
+            "experience": 5,
+            "totalScore": 6.8
+          }
+        },
+        {
+          "itemName": "Alex Chen",
+          "passed": true,
+          "score": 4.8,
+          "details": {
+            "candidateId": "C005",
+            "rank": 3,
+            "cultureScore": 6,
+            "experience": 3,
+            "totalScore": 4.8
+          }
+        }
+      ],
+      "reasoning": "Ranked all candidates by composite score (60% culture fit + 40% experience). Selected top 3: Sarah Williams (Rank 1, Score 7.2), Jane Smith (Rank 2, Score 6.8), Alex Chen (Rank 3, Score 4.8). Not selected: . Selection prioritizes strong cultural alignment while valuing experience.",
+      "metadata": {
+        "topCandidates": [
+          {
+            "name": "Sarah Williams",
+            "score": 7.2
+          },
+          {
+            "name": "Jane Smith",
+            "score": 6.8
+          },
+          {
+            "name": "Alex Chen",
+            "score": 4.8
+          }
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "totalSteps": 4,
+    "successfulSteps": 3,
+    "failedSteps": 0,
+    "totalCandidates": 6,
+    "technicallyQualified": 3,
+    "rejected": 3,
+    "selected": 3,
+    "topCandidateNames": [
+      "Sarah Williams",
+      "Jane Smith",
+      "Alex Chen"
+    ]
+  }
+}
